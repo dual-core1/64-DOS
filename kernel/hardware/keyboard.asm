@@ -39,3 +39,4 @@ isDown
 	rts
 notDown
 	ldx #0
+	rts
