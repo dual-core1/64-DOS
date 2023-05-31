@@ -5,3 +5,4 @@
 ;--------------------------------------
 
 	include "switchio.asm"
+	include "1541.asm"
