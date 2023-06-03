@@ -8,7 +8,7 @@
 
 kbBuffer equ $0277
 lenKBuff equ $00c6
-SCNKEY equ $ea87
+;SCNKEY equ $ea87 this is defined in util/KERNAL.asm
 
 clearKeyboardBuffer
 	subroutine

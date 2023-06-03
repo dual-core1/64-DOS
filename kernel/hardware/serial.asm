@@ -1,6 +1,6 @@
 ;---------------------------------------
 ;SERIAL BUS INTERFACE
-;Facilitates serial bus access.
+;Facilitates serial bus reading.
 ;Part of the 64-DOS kernel.
 ;---------------------------------------
 

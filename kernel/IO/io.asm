@@ -1,3 +1,5 @@
+;Do not use this file! It has unreliable code.
+
 ;--------------------------------------
 ;IO
 ;Consolidates all input/output code.

@@ -1,3 +1,5 @@
+;Do not use this file! It has unreliable code.
+
 ;---------------------------------------
 ;SwitchIO
 ;Switches input/output devices.

@@ -1,3 +1,6 @@
+;This file will not be used in 64-DOS! It is unfinished and uses unreliable
+;code.
+
 ;--------------------------------------
 ;1541
 ;Controls the 1541 disk drive.
@@ -60,7 +63,6 @@ prepareToCommand1541
 ;the drive number, not the device number.
 
 stopCommand1541
-	subroutine
 	adc #7
 	jsr UNLSTN
 	jsr switchOutputToScreen
