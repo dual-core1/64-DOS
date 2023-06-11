@@ -6,3 +6,4 @@ del	byte "DEL",0
 ren	byte "REN",0
 run	byte "RUN",0
 cecho	byte "ECHO",0
+exit	byte "EXIT",0

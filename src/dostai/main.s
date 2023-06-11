@@ -5,9 +5,9 @@
 ;------- Simplified Executable (SE) header -------
 
 	byte "SE"	;signature
-	byte $14	;number of pages
-	;entry point low byte
-	;entry point high byte
+	byte $00	;number of pages (a page is 256 bytes)
+	byte $00	;entry point low byte
+	byte $00	;entry point high byte
 	
 ;------- Code Segment -------
 	seg code
@@ -34,49 +34,29 @@ main	lda _echo	;if echo on, output prompt
 	cmp 4
 	beq outD4
 	
-outD1	subroutine	;output name of drive 1
-	ldx #0
-.loop	lda drive1,x
-	beq .exit
-	jsr $ffd2
-	inx
-	jmp .loop
-.exit	jmp wait
-
-outD2	subroutine	;output name of drive 2
-	ldx #0
-.loop	lda drive2,x
-	beq .exit
-	jsr $ffd2
-	inx
-	jmp .loop
-.exit	jmp wait
-
-outD3	subroutine	;output name of drive 3
-	ldx #0
-.loop	lda drive3,x
-	beq .exit
-	jsr $ffd2
-	inx
-	jmp .loop
-.exit	jmp wait
-
-outD4	subroutine	;output name of drive 4
-	ldx #0
-.loop	lda drive4,x
-	beq .exit
-	jsr $ffd2
-	inx
-	jmp .loop
-.exit	jmp wait
-
 wait	jsr hinput	;handle input
-	jsr resettk	;reset tokenizer
-	jsr tokeniz	;tokenize
+	jsr gclen	;get command length
+	lda clength	;read command length
+	cmp #0
+	beq main	;if clength = 0 then goto main
+	cmp #3
+	beq cmpl3	;if clength = 3 then goto cmpl3
+	cmp #4
+	beq cmpl4	;if clength = 4 then goto cmpl4
+
+;	jsr resettk	;reset tokenizer
+;	jsr tokeniz	;tokenize
+;	jsr resetps	;reset parser
+;	jsr parse	;parse
+	jsr cstdin	;clear stdin
+	jmp main
 
 	include "handleinput.s"
 	include "clearstdin.s"
-	include "toker.s"
+	include "process.s"
+	include "outputdrive.s"
+;	include "toker.s"
+;	include "parser.s"
 	
 ;------- Data Segment -------
 	seg data
