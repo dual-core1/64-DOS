@@ -2,4 +2,4 @@
 A disk operating system for the Commodore 64 microcomputer.
 
 ## Status
-In active development.
+Unfinished; not in active development.
